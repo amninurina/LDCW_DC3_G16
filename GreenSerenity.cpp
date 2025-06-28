@@ -19,6 +19,49 @@ float calculateCostSaved(float energySaved, float ratePerKwh = 0.50) {
     return energySaved * ratePerKwh;
 }
 
+// Display tips
+void showTips() {
+
+    cout << "=====================================================================================\n";
+    cout << "            			 SMART LIVING TIPS FOR YOU \n";
+    cout << "=====================================================================================\n";
+
+    cout << "\n  1. Turn off appliances when not in use.";
+    cout << "\n    > Save energy by switching off devices instead of leaving them on standby.";
+
+    cout << "\n\n  2. Use energy-efficient LED bulbs.";
+    cout << "\n    > LEDs use up to 80% less energy and last much longer than traditional bulbs.";
+
+    cout << "\n\n  3. Unplug chargers to avoid phantom power.";
+    cout << "\n    > Devices still draw power when plugged in, even if not in use.";
+
+    cout << "\n\n  4. Use smart plugs or timers.";
+    cout << "\n    > Automate on/off schedules for better energy control.";
+
+    cout << "\n\n  5. Track your usage with energy apps.";
+    cout << "\n    > Monitor your electricity usage and get insights to save more.";
+
+    cout << "\n\n=====================================================================================\n";
+    cout << " Every small step counts toward a greener planet! \n";
+    cout << "=====================================================================================\n";
+
+}
+
+void showDeviceEstimates() {
+
+    cout<<"=== Device Power Estimates ==="<<endl;
+
+    cout << "\n--- Average Power Ratings for Common Devices ---\n";
+    cout << "1. LED Light Bulb     : 10 - 15 Watts\n";
+    cout << "2. Laptop             : 50 - 100 Watts\n";
+    cout << "3. Fan                : 75 - 120 Watts\n";
+    cout << "4. Television         : 100 - 150 Watts\n";
+    cout << "5. Refrigerator       : 150 - 300 Watts\n";
+    cout << "6. Air Conditioner    : 1000 - 2000 Watts\n";
+    cout << "7. Washing Machine    : 400 - 1000 Watts\n";
+    cout << "--------------------------------------------------\n";
+}
+
 void calculateWaterUsage(){
 
     cout << "\n ===Water Usage===" << endl;
