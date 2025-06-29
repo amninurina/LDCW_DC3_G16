@@ -253,3 +253,172 @@ void Quiz() {
     else
         cout << "Keep learning! Every step helps build a greener future.\n";
 }
+
+int main() {
+
+    string username;
+    char repeat;
+    float powerRating=0, usageHours=0, energySavingPercent=0;
+    int choice, usageDays;
+
+
+cout << R"(
+      W   W  EEEEE  L      CCCCC  OOOOO  M   M  EEEEE
+      W   W  E      L     C      O     O MM MM  E
+      W   W  E      L     C      O     O M M M  E
+      W W W  EEEE   L     C      O     O M   M  EEEE
+      WW WW  E      L     C      O     O M   M  E
+      W   W  E      L     C      O     O M   M  E
+      W   W  EEEEE  LLLLL  CCCCC  OOOOO  M   M  EEEEE)" << endl;
+
+    cout << "\n=============================================================\n";
+    cout << "      Green City, Smart Living: Sustainable Urban Futures \n";
+    cout << "=============================================================\n";
+    cout << "   Welcome! This interactive system helps you calculate\n";
+    cout << "   your energy usage, carbon footprint, and learn tips\n";
+    cout << "              for smarter, greener living.\n";
+    cout << "-------------------------------------------------------------\n";
+
+    cout << "\n Please enter your name to begin: ";
+    getline(cin, username);
+
+    do{
+
+    cout << "=============================================================\n";
+    cout << "      Green City, Smart Living: Sustainable Urban Futures \n";
+    cout << "=============================================================\n";
+
+    cout<<"\nHi "<<username<<", what would you like to do? ";
+
+    cout<<"\n1. Calculate Energy & Carbon Footprint"<<endl;
+    cout<<"2. Calculate Water Usage"<<endl;
+    cout<<"3. Eco Score"<<endl;
+    cout<<"4. Green City Quiz"<<endl;
+    cout<<"5. Learn Smart Living Tips"<<endl;
+    cout<<"6. View Device Power Estimates"<<endl;
+    cout<<"7. Exit Program"<<endl;
+
+    // Validate user input
+        while (true) {
+            cout << "\nEnter your choice (1-7): ";
+            cin >> choice;
+
+            if (cin.fail() || choice < 1 || choice > 7) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Invalid option! Please enter a number between 1 and 7.\n";
+            } else {
+                cin.ignore(10000, '\n');
+                break;
+            }
+        }
+
+        if (choice == 1) {
+            cout << "=== Calculate Energy & Carbon Footprint ===\n";
+            showDeviceEstimates();
+            // Power rating input
+            while (true) {
+                cout << "\nEnter device power rating (Watts): ";
+                cin >> powerRating;
+                if (cin.fail() || powerRating <= 0) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Invalid input. Please enter a positive number.\n";
+                } else {
+                    cin.ignore(10000, '\n');
+                    break;
+                }
+            }
+
+            // Hours per day
+            while (true) {
+                cout << "\nHow many hours do you use it per day? ";
+                cin >> usageHours;
+                if (cin.fail() || usageHours <= 0) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Invalid input. Please enter a valid number of hours.\n";
+                } else {
+                    cin.ignore(10000, '\n');
+                    break;
+                }
+            }
+
+            // Days used
+            while (true) {
+                cout << "\nHow many days do you use it? ";
+                cin >> usageDays;
+                if (cin.fail() || usageDays <= 0) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Invalid input. Please enter a valid number of days.\n";
+                } else {
+                    cin.ignore(10000, '\n');
+                    break;
+                }
+            }
+
+            // Energy saving %
+            while (true) {
+                cout << "\nWhat is your estimated energy saving percentage due to smart usage (0-100)?: ";
+                cin >> energySavingPercent;
+                if (cin.fail() || energySavingPercent < 0 || energySavingPercent > 100) {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Invalid input. Please enter a percentage between 0 and 100.\n";
+                } else {
+                    cin.ignore(10000, '\n');
+                    break;
+                }
+            }
+
+            // Output results
+            float totalEnergyUsed = calculateEnergy(powerRating, usageHours, usageDays);
+            float energySaved = totalEnergyUsed * (energySavingPercent / 100);
+            float carbonSaved = calculateCarbonSaved(energySaved);
+            float costSaved = calculateCostSaved(energySaved);
+
+            cout << "\n--- Eco Report for " << username << " ---\n\n";
+            cout << "1. Total Energy Used: " << totalEnergyUsed << " kWh\n";
+            cout << "2. Estimated Energy Saved: " << energySaved << " kWh\n";
+            cout << "3. Estimated CO2 Emissions Reduced: " << carbonSaved << " kg\n";
+            cout << "4. Estimated Electricity Bill Saved: RM " << costSaved << "\n";
+        }
+
+        else if (choice == 2) {
+            calculateWaterUsage();
+        }
+
+        else if (choice == 3) {
+            ecoScore();
+        }
+
+        else if (choice == 4) {
+            Quiz();
+        }
+
+        else if (choice == 5) {
+            showTips();
+        }
+
+        else if (choice == 6) {
+            showDeviceEstimates();
+        }
+
+        else if (choice == 7) {
+            cout << "\nThank you for contributing to a smarter and greener city!" << endl;
+            exit(0);
+        }
+
+        // Ask to continue
+        do {
+            cout << "\nDo you want to continue? [y/n]: ";
+            cin >> repeat;
+        } while (repeat != 'y' && repeat != 'n');
+
+    } while (repeat == 'y');
+
+    cout << "\nThank you for contributing to a smarter and greener city!" << endl;
+
+    return 0;
+}
